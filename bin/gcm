@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "../lib/gcm/cli"
+
+begin
+   Cli.run ARGV
+rescue Errno::ENOENT => err
+  abort "gcm: #{err.message}"
+rescue OptionParser::InvalidOption => err
+   abort "gcm: #{err.message}\nusage: gcm [-v,-k...] [arguments ...]"
+end
